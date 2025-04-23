@@ -13,11 +13,16 @@ import psycopg2
 
 def get_connection():
     return psycopg2.connect(
-        host=st.secrets["localhost"],
-        dbname=st.secrets["job_tracker"],
-        user=st.secrets["postgres"],
+        # host=st.secrets["localhost"],
+        # dbname=st.secrets["job_tracker"],
+        # user=st.secrets["postgres"],
+        # password=st.secrets["password"],
+        # port=st.secrets["5432"]
+        host=st.secrets["host"],
+        dbname=st.secrets["dbname"],
+        user=st.secrets["user"],
         password=st.secrets["password"],
-        port=st.secrets["5432"]
+        port=st.secrets["port"]
     )
 
 @st.cache_data
