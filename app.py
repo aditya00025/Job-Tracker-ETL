@@ -3,12 +3,21 @@ import pandas as pd
 import psycopg2
 
 # DB connection
+# def get_connection():
+#     return psycopg2.connect(
+#         host="localhost",
+#         database="job_tracker",
+#         user="postgres",  
+#         password="password" 
+#     )
+
 def get_connection():
     return psycopg2.connect(
-        host="localhost",
-        database="job_tracker",
-        user="postgres",  
-        password="password" 
+        host=st.secrets["localhost"],
+        dbname=st.secrets["job_tracker"],
+        user=st.secrets["postgres"],
+        password=st.secrets["password"],
+        port=st.secrets["5432"]
     )
 
 @st.cache_data
@@ -50,3 +59,7 @@ st.download_button(
     file_name="filtered_jobs.csv",
     mime="text/csv"
 )
+
+
+
+
